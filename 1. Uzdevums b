@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// formulas ideja = iegût visus 6 ciparu skaitlus no otras puses (piem. 123456 - uz 654321) un parbaudit vai tie ir vienâdi ar originâlo skaitli, ja jâ, tad izvadît terminâlâ
+
+int main()
+{
+	int sk, atl, pal = 0, sk2;
+
+    sk = 1000000;
+
+	for (sk2; sk!=100000; --sk) // te iegûstu visus skaitlus no 1 000 000 lîdz 100 000.
+	{
+		sk2 = sk; // ierakstu otru mainîgo
+			for (atl = 0; sk!=0; sk = sk/10) // iegûstu skaitli no otras puses
+			{
+				atl=sk%10;
+    			pal = pal*10 + atl;
+   			}
+		sk = sk2; // atgûstu skaitli atpakal, jo sk tagad bija 0
+			if(pal == sk) // ja skaitlis no otras puses sakrît ar originâlo skaitli, tad tas tiek izvadîts terminâlî
+			{
+				cout << pal << endl;
+			}
+		pal = 0; // restarteju pal uz 0, lai nesabojatu nâkamo formulu ciklâ
+	}
+	
+    system("PAUSE");
+    return 0;
+}
