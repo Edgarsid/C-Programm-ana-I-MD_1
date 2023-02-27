@@ -1,0 +1,51 @@
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+// formulas ideja = katru reizi samazinat diapazonu, kurâ programma izvada skaitli. Ar katru reizi tiek pieskirta jauna augseja vai apakseja diapazona robeza
+
+int main()
+{
+	cout << "Iedomajaties skaitli no 1 - 100" << endl 
+	<< "Programma mines skaitli" << endl
+	<< "Ja izvaditais skaitlis lielaks par Jusu, uzrakstiet: 1" << endl
+	<< "Ja izvaditais skaitlis mazaks par Jusu, uzrakstiet: 2" << endl
+	<< "Ja skaitlis uzminets, uzrakstiet: 3" << endl;
+	
+	int skaitlis, guess;
+	time_t t;
+    srand(time(&t));
+       
+	int min = 0;
+	int maks = 100; // sâkuma vertibas no 0 lîdz 100
+	  	
+	for (int i = 1; i <= 10; i = ++i) // funkcionâla prasîba = programmai ir jâuzmin no 10 reizem, tapec te var but jebkurs skaitlis virs 10
+	{
+		skaitlis = rand() % (maks-min+1) + min; // diapazons, kurâ programmai jâizvada skaitli. Augseja un apakseja robeza mainas atkarîbâ no izvadâmâ skaitla.
+		cout << skaitlis << endl;
+		cin >> guess;
+		
+		
+			if (guess == 1) // ja izvaditais skaitlis ir lielaks par iedomato, tad sis skaitlis klust par augsejo robezu, lai nakamais izvaditais skaitlis nebutu lielaks par so
+			{
+				maks = skaitlis - 1; // drosibai, lai atkal netiktu izvadits sis pats skaitlis
+			}
+			else if (guess == 2) // ja izvaditais skaitlis ir mazaks par iedomato, tad sis skaitlis klust par apaksejo robezu, lai nakamais izvaditais skaitlis nebutu mazaks par so
+			{	
+				min = skaitlis + 1; // drosibai, lai atkal netiktu izvadits sis pats skaitlis
+			}
+			else if (guess == 3)
+			{
+				cout << "Programma uzmineja skaitli no " << i << ". meginajuma" << endl;
+				break;
+			}
+			else
+			{
+				cout << "Nepareizi ievadits simbols" << endl; // ja nepareizi ievada simbolu, programma neuzskata to kâ minejamo reizi
+				i = i-1;
+			}
+	}
+	system("pause");
+	return 0;
+	}
