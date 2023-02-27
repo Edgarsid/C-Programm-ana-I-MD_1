@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// formulas ideja = iegût sk (ievadîto skaitli) no otras (piem. 123 iegut par 321), iegûto vertibu pieskirt pal, un tad salidzinât vai sk = pal.
+
+int main()
+{
+	int sk, atl, pal = 0, sk2 ;  // sk - skaitlis, atl - atlikums, pal - pârbaudâmais palindroms, sk2 - otrs mainîgais, lai atgûtu atpakal ierakstîto skaitli
+
+    cout <<"Ievadiet naturalu skaitli: ";
+    cin >> sk;  
+    sk2 = sk;  
+
+   for (atl=0; sk!=0; sk=sk/10)  // cikla formula = nogriezu pedejo ciparu no skaitla un pielieku to prieksâ, un tâ visus skaitla ciparus.
+    {
+    	atl=sk%10; // iegûstu pedejo ciparu no skaitla
+    	pal = pal*10 + atl; // pedejo ciparu no skaitla ievietoju kâ pirmo
+    } 
+    
+    sk = sk2;  // pec for cikla jaatgust atpakal originâlo skaitli
+    
+    if(sk == pal) // salidzinu, vai originalais skaitlis ir tads pats kâ skaitlis no otras puses, ja jâ, tad polindroms, ja ne, tad nav polindroms
+    {
+    	cout << "Skaitlis ir palindroms" << endl;
+	}
+	else
+	{
+		cout << "Skaitlis nav palindroms" << endl;
+	}
+ 
+    system("PAUSE");
+    return 0;
+}
